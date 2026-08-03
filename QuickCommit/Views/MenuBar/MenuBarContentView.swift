@@ -14,7 +14,9 @@ struct MenuBarContentView: View {
             }
             Divider()
             Button("Add Repository…") { store.addRepository() }
-            Button("Settings…") { NSApp.sendAction(Selector(("showSettingsWindow:")), to: nil, from: nil) }
+            SettingsLink {
+                Text("Settings…")
+            }
             Button("Quit Quick Commit") { NSApp.terminate(nil) }
         }
         .padding()
