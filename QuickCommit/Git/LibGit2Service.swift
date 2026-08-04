@@ -19,6 +19,7 @@ actor LibGit2Service: GitServing {
         try withRuntime(at: url) { repository in
             var signature: UnsafeMutablePointer<git_signature>?
             let result = git_signature_default(&signature, repository)
+            if result != GIT_OK.rawValue, signature == nil { return nil }
             guard result == GIT_OK.rawValue else {
                 throw makeError(result)
             }

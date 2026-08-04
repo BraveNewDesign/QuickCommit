@@ -86,7 +86,10 @@ final class RepositoryStore: ObservableObject {
     func remove(_ record: RepositoryRecord) {
         monitors.removeValue(forKey: record.id)?.stop()
         repositories.removeAll { $0.id == record.id }; contexts[record.id] = nil; errors[record.id] = nil
-        Task { try? await save() }
+        Task { @MainActor in
+            do { try await save(); generalError = nil }
+            catch { }
+        }
     }
     private func startMonitor(for record: RepositoryRecord) {
         guard monitors[record.id] == nil, let lease = try? access.access(record) else { return }
@@ -101,9 +104,13 @@ final class RepositoryStore: ObservableObject {
     }
 
     func persistSettings() {
+        generalError = nil
         do { try LaunchAtLoginService().setEnabled(settings.launchAtLogin); launchAtLoginError = nil }
         catch { launchAtLoginError = .unavailable; settings.launchAtLogin = LaunchAtLoginService().isEnabled }
-        Task { try? await save() }
+        Task { @MainActor in
+            do { try await save(); generalError = nil }
+            catch { }
+        }
     }
     private func save() async throws {
         do { try await stateStore.save(PersistedAppState(repositories: repositories, settings: settings)) }

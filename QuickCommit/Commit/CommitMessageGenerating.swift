@@ -14,6 +14,8 @@ struct CommitMessageQuality: Equatable, Sendable {
         case containsNewline
         case terminalPunctuation
         case generic
+        case nonImperative
+        case overlyOperational
         case mentionsGeneratedFile
     }
 
@@ -30,7 +32,20 @@ enum CommitMessageQualityEvaluator {
         if value.count > 72 { issues.append(.tooLong); score -= 30 }
         if value.contains("\n") || value.contains("\r") { issues.append(.containsNewline); score -= 40 }
         if value.last.map({ ".!?;:".contains($0) }) == true { issues.append(.terminalPunctuation); score -= 10 }
-        if Self.genericSubjects.contains(value.lowercased()) { issues.append(.generic); score -= 40 }
+        let normalized = value.lowercased()
+        if Self.genericSubjects.contains(normalized) || Self.isCountOnlySubject(normalized) {
+            issues.append(.generic)
+            score -= 40
+        }
+        if let firstWord = normalized.split(separator: " ").first,
+           !Self.imperativeVerbs.contains(String(firstWord)) {
+            issues.append(.nonImperative)
+            score -= 20
+        }
+        if Self.isOverlyOperationalSubject(normalized) {
+            issues.append(.overlyOperational)
+            score -= 20
+        }
         if context.likelyGeneratedPaths.contains(where: { path in
             let name = URL(fileURLWithPath: path).lastPathComponent.lowercased()
             return value.lowercased().contains(name)
@@ -51,6 +66,18 @@ enum CommitMessageQualityEvaluator {
         "make changes",
         "miscellaneous changes"
     ]
+
+    private static let imperativeVerbs: Set<String> = [
+        "add", "adjust", "allow", "block", "build", "change", "configure", "create", "delete", "disable", "document", "enable", "expose", "fix", "handle", "improve", "introduce", "migrate", "move", "prevent", "refactor", "refine", "remove", "rename", "replace", "restore", "simplify", "split", "support", "update", "use"
+    ]
+
+    private static func isCountOnlySubject(_ value: String) -> Bool {
+        value.range(of: #"^(add|change|modify|remove|update) (the )?\d+ files?$"#, options: .regularExpression) != nil
+    }
+
+    private static func isOverlyOperationalSubject(_ value: String) -> Bool {
+        value.range(of: #"^(add|change|modify|remove|update) file:.*$"#, options: .regularExpression) != nil
+    }
 }
 
 extension CommitMessageGenerating {
