@@ -4,7 +4,7 @@ import SwiftUI
 struct QuickCommitApp: App {
     @StateObject private var store = RepositoryStore()
     var body: some Scene {
-        MenuBarExtra("Quick Commit", systemImage: "arrow.trianglehead.branch") {
+        MenuBarExtra("Quick Commits", systemImage: "arrow.trianglehead.branch") {
             MenuBarContentView(store: store)
         }
         .menuBarExtraStyle(.window)

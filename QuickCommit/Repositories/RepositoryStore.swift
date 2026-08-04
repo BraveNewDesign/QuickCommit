@@ -5,6 +5,7 @@ import Combine
 final class RepositoryStore: ObservableObject {
     @Published private(set) var repositories: [RepositoryRecord] = []
     @Published private(set) var contexts: [UUID: CommitChangeContext] = [:]
+    @Published private(set) var commitProgress: [UUID: CommitProgress] = [:]
     @Published private(set) var errors: [UUID: RepositoryError] = [:]
     @Published var settings = AppSettings()
     private let stateStore = AppStateStore()
@@ -49,7 +50,13 @@ final class RepositoryStore: ObservableObject {
 
     func commit(_ record: RepositoryRecord) {
         Task { @MainActor in
-            do { _ = try await coordinator.commit(record, settings: settings); await refresh(record) }
+            defer { commitProgress[record.id] = nil }
+            do {
+                _ = try await coordinator.commit(record, settings: settings) { [weak self] phase in
+                    Task { @MainActor in self?.commitProgress[record.id] = phase }
+                }
+                await refresh(record)
+            }
             catch let error as RepositoryError { errors[record.id] = error }
             catch { errors[record.id] = .gitOperationFailed }
         }

@@ -44,6 +44,11 @@ struct LibGit2Service: GitServing, Sendable {
     }
 
     func commitAllChanges(at url: URL, subject: String, identity: CommitIdentity) async throws -> CommitResult {
+        try await stageAllChanges(at: url)
+        return try await commitStagedChanges(at: url, subject: subject, identity: identity)
+    }
+
+    func stageAllChanges(at url: URL) async throws {
         try withRuntime(at: url) { repository in
             let before = try statusSnapshot(repository: repository)
             guard !before.hasConflicts else { throw RepositoryError.conflictedRepository }
@@ -54,15 +59,16 @@ struct LibGit2Service: GitServing, Sendable {
             defer { git_index_free(index) }
             result = git_index_add_all(index, nil, GIT_INDEX_ADD_DEFAULT.rawValue, nil, nil)
             guard result == GIT_OK.rawValue else { throw LibGit2ErrorMapper.map(code: result) }
+            result = git_index_update_all(index, nil, nil, nil)
+            guard result == GIT_OK.rawValue else { throw LibGit2ErrorMapper.map(code: result) }
             result = git_index_write(index)
             guard result == GIT_OK.rawValue else { throw LibGit2ErrorMapper.map(code: result) }
-            var treeOID = git_oid()
-            result = git_index_write_tree(&treeOID, index)
-            guard result == GIT_OK.rawValue else { throw LibGit2ErrorMapper.map(code: result) }
-            var tree: OpaquePointer?
-            result = git_tree_lookup(&tree, repository, &treeOID)
-            guard result == GIT_OK.rawValue, let tree else { throw LibGit2ErrorMapper.map(code: result) }
-            defer { git_tree_free(tree) }
+        }
+    }
+
+    func commitStagedChanges(at url: URL, subject: String, identity: CommitIdentity) async throws -> CommitResult {
+        try withRuntime(at: url) { repository in
+            var result: Int32
             var author: UnsafeMutablePointer<git_signature>?
             var committer: UnsafeMutablePointer<git_signature>?
             result = git_signature_now(&author, identity.name, identity.email)
@@ -71,23 +77,16 @@ struct LibGit2Service: GitServing, Sendable {
             result = git_signature_now(&committer, identity.name, identity.email)
             guard result == GIT_OK.rawValue, let committer else { throw RepositoryError.gitOperationFailed }
             defer { git_signature_free(committer) }
-            var parent: OpaquePointer?
-            var parents: [OpaquePointer?] = []
-            if git_repository_head_unborn(repository) == 0 {
-                var headOID = git_oid()
-                result = git_reference_name_to_id(&headOID, repository, "HEAD")
-                guard result == GIT_OK.rawValue else { throw LibGit2ErrorMapper.map(code: result) }
-                result = git_commit_lookup(&parent, repository, &headOID)
-                guard result == GIT_OK.rawValue, let parent else { throw LibGit2ErrorMapper.map(code: result) }
-                parents = [parent]
-            }
-            defer { if let parent { git_commit_free(parent) } }
+
+            var options = git_commit_create_options()
+            options.version = 1
+            options.allow_empty_commit = 0
+            options.author = UnsafePointer(author)
+            options.committer = UnsafePointer(committer)
+
             var commitOID = git_oid()
             result = subject.withCString { message in
-                let parentCount = parents.count
-                return parents.withUnsafeMutableBufferPointer { buffer in
-                    git_commit_create(&commitOID, repository, "HEAD", author, committer, nil, message, tree, parentCount, buffer.baseAddress)
-                }
+                git_commit_create_from_stage(&commitOID, repository, message, &options)
             }
             guard result == GIT_OK.rawValue else { throw LibGit2ErrorMapper.map(code: result) }
             return .committed(subject: subject)

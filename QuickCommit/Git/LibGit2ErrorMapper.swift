@@ -12,7 +12,8 @@ enum LibGit2ErrorMapper {
         // Xcode toolchains, so keep the documented stable values local here.
         case -3: return .invalidRepository       // GIT_ENOTFOUND
         case -14: return .repositoryLocked       // GIT_ELOCKED
-        case -13: return .conflictedRepository   // GIT_ECONFLICT
+        case -10, -13: return .conflictedRepository // GIT_EUNMERGED, GIT_ECONFLICT
+        case -38: return .noChanges              // GIT_EUNCHANGED
         default: return .gitOperationFailed
         }
     }

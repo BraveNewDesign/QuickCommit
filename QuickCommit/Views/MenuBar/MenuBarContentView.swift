@@ -9,7 +9,7 @@ struct MenuBarContentView: View {
                 ContentUnavailableView("No Repositories", systemImage: "folder", description: Text("Add a Git repository to begin."))
             } else {
                 ForEach(store.repositories.filter { store.settings.showCleanRepositories || store.contexts[$0.id]?.changedFileCount ?? 0 > 0 }) { repository in
-                    RepositoryRow(repository: repository, context: store.contexts[repository.id], error: store.errors[repository.id], onCommit: { store.commit(repository) }, onRetry: { Task { await store.refresh(repository) } })
+                    RepositoryRow(repository: repository, context: store.contexts[repository.id], error: store.errors[repository.id], progress: store.commitProgress[repository.id], onCommit: { store.commit(repository) }, onRetry: { Task { await store.refresh(repository) } })
                 }
             }
             Divider()
