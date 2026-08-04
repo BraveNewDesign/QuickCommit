@@ -11,8 +11,11 @@ actor AppStateStore {
 
     func load() throws -> PersistedAppState {
         guard fileManager.fileExists(atPath: stateURL.path) else { return PersistedAppState() }
-        let state = try JSONDecoder().decode(PersistedAppState.self, from: Data(contentsOf: stateURL))
-        return state.schemaVersion == PersistedAppState.currentSchemaVersion ? state : PersistedAppState()
+        let data = try Data(contentsOf: stateURL)
+        let state = try JSONDecoder().decode(PersistedAppState.self, from: data)
+        if state.schemaVersion == PersistedAppState.currentSchemaVersion { return state }
+        if state.schemaVersion == 1 { var migrated = state; migrated.schemaVersion = PersistedAppState.currentSchemaVersion; return migrated }
+        throw RepositoryError.persistenceFailed
     }
 
     func save(_ state: PersistedAppState) throws {

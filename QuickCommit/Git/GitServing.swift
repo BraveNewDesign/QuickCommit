@@ -2,8 +2,8 @@ import Foundation
 
 protocol GitServing: Sendable {
     func inspectRepository(at url: URL) async throws -> CommitChangeContext
-    func stageAllChanges(at url: URL) async throws
-    func commitStagedChanges(at url: URL, subject: String, identity: CommitIdentity) async throws -> CommitResult
-    func commitAllChanges(at url: URL, subject: String, identity: CommitIdentity) async throws -> CommitResult
-    func repositoryIdentity(at url: URL) async throws -> CommitIdentity?
+    func resolveIdentity(at url: URL) async throws -> CommitIdentity?
+    func prepareCheckpoint(at url: URL, identity: CommitIdentity) async throws -> PreparedCheckpoint
+    func commitPreparedCheckpoint(_ prepared: PreparedCheckpoint, subject: String, identity: CommitIdentity) async throws -> CommitResult
+    func rollbackPreparedCheckpoint(_ prepared: PreparedCheckpoint) async throws
 }

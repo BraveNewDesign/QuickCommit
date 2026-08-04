@@ -42,10 +42,12 @@ struct ModelScaffoldTests {
 
         let service = LibGit2Service()
         let identity = CommitIdentity(name: "QuickCommit Tests", email: "quickcommit-tests@example.com")
-        _ = try await service.commitAllChanges(at: directory, subject: "Initial checkpoint", identity: identity)
+        let initial = try await service.prepareCheckpoint(at: directory, identity: identity)
+        _ = try await service.commitPreparedCheckpoint(initial, subject: "Initial checkpoint", identity: identity)
 
         try Data("second\n".utf8).write(to: file)
-        let result = try await service.commitAllChanges(at: directory, subject: "Update checkpoint", identity: identity)
+        let prepared = try await service.prepareCheckpoint(at: directory, identity: identity)
+        let result = try await service.commitPreparedCheckpoint(prepared, subject: "Update checkpoint", identity: identity)
         #expect(result == .committed(subject: "Update checkpoint"))
 
         let context = try await service.inspectRepository(at: directory)

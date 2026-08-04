@@ -6,7 +6,7 @@ actor CommitCoordinator {
     private let generator: any CommitMessageGenerating
     private var busy = false
 
-    init(git: any GitServing = LibGit2Service(), access: RepositoryAccessManager = RepositoryAccessManager(), generator: any CommitMessageGenerating = FallbackCommitMessageGenerator()) {
+    init(git: any GitServing = LibGit2Service(), access: RepositoryAccessManager = RepositoryAccessManager(), generator: any CommitMessageGenerating = FoundationCommitMessageGenerator()) {
         self.git = git; self.access = access; self.generator = generator
     }
 
@@ -21,15 +21,28 @@ actor CommitCoordinator {
         let context = try await git.inspectRepository(at: lease.url)
         guard !context.hasConflicts else { throw RepositoryError.conflictedRepository }
         guard context.changedFileCount > 0 else { throw RepositoryError.noChanges }
-        onProgress(.staging)
-        try await git.stageAllChanges(at: lease.url)
         let identity: CommitIdentity?
-        if let configured = settings.commitIdentity { identity = configured }
-        else { identity = try await git.repositoryIdentity(at: lease.url) }
+        if let configured = settings.commitIdentity, configured.isUsable { identity = configured }
+        else { identity = try await git.resolveIdentity(at: lease.url) }
         guard let identity else { throw RepositoryError.missingCommitIdentity }
+        onProgress(.staging)
+        let prepared = try await git.prepareCheckpoint(at: lease.url, identity: identity)
         onProgress(.generatingMessage)
-        let subject = await generator.subject(for: context)
+        let generated: GeneratedCommitMessage
+        do { generated = try await generator.message(for: context) }
+        catch is CancellationError {
+            try? await git.rollbackPreparedCheckpoint(prepared)
+            throw RepositoryError.cancelled
+        } catch {
+            try? await git.rollbackPreparedCheckpoint(prepared)
+            throw error
+        }
         onProgress(.committing)
-        return try await git.commitStagedChanges(at: lease.url, subject: subject, identity: identity)
+        do { return try await git.commitPreparedCheckpoint(prepared, subject: generated.subject, identity: identity) }
+        catch {
+            if case RepositoryError.indexChangedExternally = error { throw error }
+            try? await git.rollbackPreparedCheckpoint(prepared)
+            throw error
+        }
     }
 }

@@ -1,3 +1,3 @@
-enum CommitResult: Equatable, Sendable {
+nonisolated enum CommitResult: Equatable, Sendable {
     case committed(subject: String)
 }

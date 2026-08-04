@@ -7,6 +7,7 @@ struct RepositoryRow: View {
     let progress: CommitProgress?
     let onCommit: () -> Void
     let onRetry: () -> Void
+    var isGloballyBusy = false
 
     private var hasChanges: Bool {
         (context?.changedFileCount ?? 0) > 0
@@ -26,7 +27,7 @@ struct RepositoryRow: View {
                     Button(progress?.label ?? (hasChanges ? "Commit" : "Checkpoint"), action: onCommit)
                         .buttonStyle(.borderedProminent)
                         .controlSize(.small)
-                        .disabled(isChecking || progress != nil)
+                        .disabled(isChecking || progress != nil || !hasChanges || isGloballyBusy)
                 }
                 else { Button("Retry", action: onRetry).controlSize(.small) }
             }
@@ -35,9 +36,12 @@ struct RepositoryRow: View {
                 Text(
                     error == nil
                         ? (progress?.label ?? (isChecking ? "Checking repository…" : (hasChanges ? "\(context?.changedFileCount ?? 0) change(s) ready" : "Clean")))
-                        : "Repository unavailable"
+                        : error?.userMessage ?? "Repository unavailable"
                 )
                     .font(.caption).foregroundStyle(.secondary)
+            }
+            if let error, error != .selectionCancelled {
+                Text(error.userMessage).font(.caption2).foregroundStyle(.red).lineLimit(2)
             }
         }
     }

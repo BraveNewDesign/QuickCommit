@@ -4,7 +4,8 @@ struct AboutSettingsView: View {
     var body: some View {
         VStack(spacing: 8) {
             Text(Constants.displayName).font(.title2)
-            Text("Version 1.0 (1)").foregroundStyle(.secondary)
+            let info = Bundle.main.infoDictionary
+            Text("Version \(info?["CFBundleShortVersionString"] as? String ?? "—") (\(info?["CFBundleVersion"] as? String ?? "—"))").foregroundStyle(.secondary)
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }

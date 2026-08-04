@@ -2,7 +2,8 @@ import Foundation
 
 final class RepositoryAccessLease: @unchecked Sendable {
     let url: URL
-    nonisolated(unsafe) private var active = true
+    private let lock = NSLock()
+    private var active = true
 
     nonisolated init(url: URL) throws {
         self.url = url
@@ -10,6 +11,7 @@ final class RepositoryAccessLease: @unchecked Sendable {
     }
 
     nonisolated func endAccess() {
+        lock.lock(); defer { lock.unlock() }
         guard active else { return }
         active = false
         url.stopAccessingSecurityScopedResource()

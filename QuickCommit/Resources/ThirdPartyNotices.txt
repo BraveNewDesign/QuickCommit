@@ -1,0 +1,3 @@
+Quick Commit includes libgit2 1.9.2, used in-process through the Git adapter.
+
+libgit2 is distributed under the GNU General Public License v2.0 with a linking exception. The complete license text and source notices are available with the pinned package source used by this build. Review and replace this notice with the approved legal text before release.

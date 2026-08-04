@@ -1,6 +1,6 @@
 import OSLog
 
-enum AppLogger {
+nonisolated enum AppLogger {
     static let repository = Logger(subsystem: Constants.bundleIdentifier, category: "repository")
     static let access = Logger(subsystem: Constants.bundleIdentifier, category: "access")
     static let git = Logger(subsystem: Constants.bundleIdentifier, category: "git")

@@ -2,8 +2,13 @@ import Foundation
 
 enum LibGit2ErrorMapper {
     static func map(_ error: Error) -> RepositoryError {
-        _ = error
+        if let error = error as? RepositoryError { return error }
         return .gitOperationFailed
+    }
+
+    static func map(code: Int32, message: String? = nil) -> RepositoryError {
+        _ = message
+        return map(code: code)
     }
 
     static func map(code: Int32) -> RepositoryError {

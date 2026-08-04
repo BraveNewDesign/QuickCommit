@@ -1,3 +1,3 @@
 # Implementation Plans
 
-Implementation plans are generated after scaffold validation and technical research. The expected future plan is `QuickCommitV1ImplementationPlan.md`.
+The active plan is [`QuickCommitV1ImplementationPlan.md`](QuickCommitV1ImplementationPlan.md). Completion evidence is recorded there by gate; a build or launch alone is not runtime or visual proof.

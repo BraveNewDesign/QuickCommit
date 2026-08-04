@@ -1,5 +1,6 @@
 import SwiftUI
 
 struct ConfirmationRow: View {
-    var body: some View { Text("Confirmation will be added during implementation") }
+    let subject: String
+    var body: some View { Label("Checkpointed: \(subject)", systemImage: "checkmark.circle.fill").foregroundStyle(.green) }
 }
