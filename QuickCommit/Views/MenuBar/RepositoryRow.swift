@@ -40,6 +40,13 @@ struct RepositoryRow: View {
                 )
                     .font(.caption).foregroundStyle(.secondary)
             }
+            if let context, !context.likelyGeneratedPaths.isEmpty {
+                let names = context.likelyGeneratedPaths.map { URL(fileURLWithPath: $0).lastPathComponent }.joined(separator: ", ")
+                Label("Likely generated file included: \(names)", systemImage: "exclamationmark.triangle")
+                    .font(.caption2)
+                    .foregroundStyle(.orange)
+                    .lineLimit(2)
+            }
             if let error, error != .selectionCancelled {
                 Text(error.userMessage).font(.caption2).foregroundStyle(.red).lineLimit(2)
             }

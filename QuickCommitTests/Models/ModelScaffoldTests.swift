@@ -24,6 +24,50 @@ struct ModelScaffoldTests {
         #expect(!message.isEmpty)
     }
 
+    @Test func fallbackMessageNamesSingleChangedFile() async throws {
+        let context = CommitChangeContext(
+            changedFileCount: 1,
+            modifiedFileCount: 0,
+            untrackedFileCount: 1,
+            deletedFileCount: 0,
+            hasConflicts: false,
+            paths: ["text.md"]
+        )
+
+        let message = try await FallbackCommitMessageGenerator().message(for: context)
+        #expect(message.subject == "Add file: text.md")
+    }
+
+    @Test func messageQualityRejectsGeneratedFileFocus() {
+        let context = CommitChangeContext(
+            changedFileCount: 3,
+            modifiedFileCount: 0,
+            untrackedFileCount: 3,
+            deletedFileCount: 0,
+            hasConflicts: false,
+            paths: [".DS_Store", "README.md", "life.md"]
+        )
+
+        let quality = CommitMessageQualityEvaluator.evaluate("Add file: .DS_Store and life.md", for: context)
+        #expect(quality.issues.contains(.mentionsGeneratedFile))
+        #expect(!quality.isAcceptable)
+    }
+
+    @Test func fallbackMessageFiltersGeneratedFiles() async throws {
+        let context = CommitChangeContext(
+            changedFileCount: 3,
+            modifiedFileCount: 0,
+            untrackedFileCount: 3,
+            deletedFileCount: 0,
+            hasConflicts: false,
+            paths: [".DS_Store", "README.md", "life.md"]
+        )
+
+        let message = try await FallbackCommitMessageGenerator().message(for: context)
+        #expect(!message.subject.contains(".DS_Store"))
+        #expect(message.subject.contains("README.md"))
+    }
+
     @Test func libGit2CommitStagesAndCommitsAllChanges() async throws {
         let directory = FileManager.default.temporaryDirectory
             .appendingPathComponent("QuickCommitTests-\(UUID().uuidString)", isDirectory: true)

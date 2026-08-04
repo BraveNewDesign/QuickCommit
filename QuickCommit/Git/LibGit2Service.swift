@@ -145,7 +145,26 @@ actor LibGit2Service: GitServing {
             if flags & (GIT_STATUS_WT_TYPECHANGE.rawValue | GIT_STATUS_INDEX_TYPECHANGE.rawValue) != 0 { context.typeChangedFileCount += 1 }
             if let delta = entry.index_to_workdir ?? entry.head_to_index, let path = delta.pointee.new_file.path ?? delta.pointee.old_file.path { context.paths.append(String(cString: path)) }
         }
+        context.diffText = (try? diffText(repository: repository)) ?? ""
         return context
+    }
+
+    private func diffText(repository: OpaquePointer) throws -> String {
+        var options = git_diff_options()
+        let optionsResult = git_diff_options_init(&options, UInt32(GIT_DIFF_OPTIONS_VERSION))
+        guard optionsResult == GIT_OK.rawValue else { throw RepositoryError.gitOperationFailed }
+        options.flags = GIT_DIFF_INCLUDE_UNTRACKED.rawValue | GIT_DIFF_RECURSE_UNTRACKED_DIRS.rawValue | GIT_DIFF_SHOW_UNTRACKED_CONTENT.rawValue
+        var diff: OpaquePointer?
+        let result = git_diff_tree_to_workdir_with_index(&diff, repository, nil, &options)
+        guard result == GIT_OK.rawValue, let diff else { throw makeError(result) }
+        defer { git_diff_free(diff) }
+
+        var buffer = git_buf()
+        let bufferResult = git_diff_to_buf(&buffer, diff, GIT_DIFF_FORMAT_PATCH)
+        defer { git_buf_dispose(&buffer) }
+        guard bufferResult == GIT_OK.rawValue else { throw makeError(bufferResult) }
+        guard let pointer = buffer.ptr else { return "" }
+        return String(cString: pointer)
     }
 
     private func operationState(repository: OpaquePointer) -> RepositoryOperationState {
