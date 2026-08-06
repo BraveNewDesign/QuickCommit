@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		299D86183025230C0065ECEA /* MarketingPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299D86173025230C0065ECEA /* MarketingPreviews.swift */; };
 		A10000040000000000000004 /* libgit2 in Frameworks */ = {isa = PBXBuildFile; productRef = A10000050000000000000005 /* libgit2 */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		2967DEE23021210200963389 /* QuickCommit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickCommit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2967DEEF3021210400963389 /* QuickCommitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickCommitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2967DEF93021210400963389 /* QuickCommitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickCommitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		299D86173025230C0065ECEA /* MarketingPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketingPreviews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -78,6 +80,7 @@
 				2967DEF23021210400963389 /* QuickCommitTests */,
 				2967DEFC3021210400963389 /* QuickCommitUITests */,
 				2967DEE33021210200963389 /* Products */,
+				299D86173025230C0065ECEA /* MarketingPreviews.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -226,6 +229,7 @@
 		2967DEDE3021210200963389 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
+				299D86183025230C0065ECEA /* MarketingPreviews.swift in Sources */,
 			);
 		};
 		2967DEEB3021210400963389 /* Sources */ = {
