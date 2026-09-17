@@ -1,0 +1,3 @@
+Quick Commit includes libgit2 1.9.2, used in-process through the Git adapter.
+
+libgit2 is Copyright (C) the libgit2 contributors and is distributed under the GNU General Public License v2.0 with the libgit2 linking exception. The complete license text for the pinned dependency is included in `libgit2-COPYING.txt` in this resource directory. The pinned source revision is recorded in `QuickCommit.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved`.
