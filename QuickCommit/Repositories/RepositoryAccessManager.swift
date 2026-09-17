@@ -9,6 +9,10 @@ struct RepositoryAccessManager: Sendable {
     nonisolated init() {}
     @MainActor
     func selectRepository() throws -> (record: RepositoryRecord, lease: RepositoryAccessLease) {
+        // Quick Commit is an agent/menu-bar app. Activate it before presenting
+        // the panel so the Finder sidebar is interactive on the first launch.
+        NSApp.activate(ignoringOtherApps: true)
+
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
