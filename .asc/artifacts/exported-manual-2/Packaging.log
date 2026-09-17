@@ -1,0 +1,137 @@
+2026-09-17 18:58:15 +0000 [MT] Initial pipeline context: <IDEDistributionProcessingPipelineContext: 0x7617f61e00; archive(resolved)="<IDEArchive: 0x7617c31c70>", distributionTask(resolved)="2", distributionDestination(resolved)="1", distributionMethod(resolved)="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team(resolved)="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	Chain (15, self inclusive):
+	<IDEDistributionProcessingPipelineContext: 0x7617f61e00; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	<IDEDistributionProcessingPipelineContext: 0x7617f61b00; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	<IDEDistributionContext: 0x7615565b80; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	<IDEDistributionContext: 0x7615565900; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	<IDEDistributionContext: 0x7615565680; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	<IDEDistributionContext: 0x7615565400; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	<IDEDistributionContext: 0x7615565180; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	<IDEDistributionContext: 0x7615564f00; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	<IDEDistributionContext: 0x7615564c80; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	<IDEDistributionContext: 0x7615564a00; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	<IDEDistributionContext: 0x7615564780; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	<IDEDistributionContext: 0x7615564500; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="<IDEProvisioningBasicTeam: 0x7615629fa0; teamID='B84R67MX7T', teamName='(null)'>">
+	<IDEDistributionContext: 0x7615564280; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="(null)">
+	<IDEDistributionContext: 0x7615564000; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="<IDEDistributionMethodMacAppStoreDistribution: 0x7617d9c030>", team="(null)">
+	<IDEDistributionContext: 0x101555cb0; archive = "<IDEArchive: 0x7617c31c70>", distributionMethod="(null)", team="(null)">
+</IDEDistributionProcessingPipelineContext: 0x7617f61e00>
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionCreateDestRootStep
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionCopyItemStep
+2026-09-17 18:58:15 +0000 [MT] Running /usr/bin/ditto '-V' '/Volumes/Secondary SSD/Projects/SwiftUI/QuickCommit/.asc/artifacts/QuickCommit.xcarchive/Products/Applications/QuickCommit.app' '/var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/Root/Applications/QuickCommit.app'
+2026-09-17 18:58:15 +0000  >>> Copying /Volumes/Secondary SSD/Projects/SwiftUI/QuickCommit/.asc/artifacts/QuickCommit.xcarchive/Products/Applications/QuickCommit.app 
+2026-09-17 18:58:15 +0000  copying file ./Contents/_CodeSignature/CodeResources ... 
+2026-09-17 18:58:15 +0000  3539 bytes for ./Contents/_CodeSignature/CodeResources
+2026-09-17 18:58:15 +0000  copying file ./Contents/MacOS/QuickCommit ... 
+2026-09-17 18:58:15 +0000  1374368 bytes for ./Contents/MacOS/QuickCommit
+2026-09-17 18:58:15 +0000  copying file ./Contents/Resources/ThirdPartyNotices.txt ... 
+2026-09-17 18:58:15 +0000  468 bytes for ./Contents/Resources/ThirdPartyNotices.txt
+2026-09-17 18:58:15 +0000  copying file ./Contents/Resources/AppIcon.icns ... 
+2026-09-17 18:58:15 +0000  65540 bytes for ./Contents/Resources/AppIcon.icns
+2026-09-17 18:58:15 +0000  copying file ./Contents/Resources/Assets.car ... 
+2026-09-17 18:58:15 +0000  1372232 bytes for ./Contents/Resources/Assets.car
+2026-09-17 18:58:15 +0000  copying file ./Contents/Resources/AppIcon.png ... 
+2026-09-17 18:58:15 +0000  1195719 bytes for ./Contents/Resources/AppIcon.png
+2026-09-17 18:58:15 +0000  copying file ./Contents/Resources/libgit2-COPYING.txt ... 
+2026-09-17 18:58:15 +0000  64631 bytes for ./Contents/Resources/libgit2-COPYING.txt
+2026-09-17 18:58:15 +0000  copying file ./Contents/embedded.provisionprofile ... 
+2026-09-17 18:58:15 +0000  12315 bytes for ./Contents/embedded.provisionprofile
+2026-09-17 18:58:15 +0000  copying file ./Contents/Info.plist ... 
+2026-09-17 18:58:15 +0000  1691 bytes for ./Contents/Info.plist
+2026-09-17 18:58:15 +0000  copying file ./Contents/PkgInfo ... 
+2026-09-17 18:58:15 +0000  8 bytes for ./Contents/PkgInfo
+2026-09-17 18:58:15 +0000 [MT] /usr/bin/ditto exited with 0
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionEmbedProfileStep
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionInfoPlistStep
+2026-09-17 18:58:15 +0000 [MT] Skipping setting DTXcodeBuildDistribution because toolsBuildVersionName was nil.
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionItemRemovalStep
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionAppThinningPlistStep
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionSymbolsStep
+2026-09-17 18:58:15 +0000 [MT] Writing /var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/Symbols/BE95D1D3-FA1A-3A28-96B8-2154723E452E.symbols
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionCopyAppleProvidedContentStep
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionAppThinningStep
+2026-09-17 18:58:15 +0000 [MT] Skipping step: IDEDistributionAppThinningStep because it said so
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionArchThinningStep
+2026-09-17 18:58:15 +0000 [MT] Archs to thin for item /Volumes/Secondary SSD/Projects/SwiftUI/QuickCommit/.asc/artifacts/QuickCommit.xcarchive/Products/Applications/QuickCommit.app are []
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionODRStep
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionStripXattrsStep
+2026-09-17 18:58:15 +0000 [MT] Skipping stripping extended attributes because the codesign step will strip them.
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionCodesignStep
+2026-09-17 18:58:15 +0000 [MT] Entitlements for <IDEDistributionItem: 0x76154eca20; bundleID='com.bravenewdesign.QuickCommit', path='<DVTFilePath:0x7615a92ee0:'/Volumes/Secondary SSD/Projects/SwiftUI/QuickCommit/.asc/artifacts/QuickCommit.xcarchive/Products/Applications/QuickCommit.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x76154ec300; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7614c06f40; name='Apple Distribution: Brave New Design LLC (B84R67MX7T)', hash='2A403707776B3FCD7A59EDA4C4D249D1944F186A', serialNumber='852984BC4C471FF1856CACC9BC70BB7', certificateKinds='(
+    "1.2.840.113635.100.6.1.7",
+    "1.2.840.113635.100.6.1.4"
+), issueDate='2026-02-24 10:56:32 +0000''>', entitlements='{
+    "com.apple.application-identifier" = "B84R67MX7T.com.bravenewdesign.QuickCommit";
+    "com.apple.developer.team-identifier" = B84R67MX7T;
+    "com.apple.security.app-sandbox" = 1;
+    "com.apple.security.files.bookmarks.app-scope" = 1;
+    "com.apple.security.files.user-selected.read-write" = 1;
+}', teamID='B84R67MX7T', identifier='com.bravenewdesign.QuickCommit', executablePath='<DVTFilePath:0x76154ec000:'/Volumes/Secondary SSD/Projects/SwiftUI/QuickCommit/.asc/artifacts/QuickCommit.xcarchive/Products/Applications/QuickCommit.app/Contents/MacOS/QuickCommit'>', hardenedRuntime='1'>'>: {
+    "com.apple.application-identifier" = "B84R67MX7T.com.bravenewdesign.QuickCommit";
+    "com.apple.developer.team-identifier" = B84R67MX7T;
+    "com.apple.security.app-sandbox" = 1;
+    "com.apple.security.files.bookmarks.app-scope" = 1;
+    "com.apple.security.files.user-selected.read-write" = 1;
+}
+2026-09-17 18:58:15 +0000 [MT] Associated App Clip Identifiers Filter: Skipping because "com.apple.developer.associated-appclip-app-identifiers" is not present
+2026-09-17 18:58:15 +0000 [MT] Entitlements for <IDEDistributionItem: 0x76154eca20; bundleID='com.bravenewdesign.QuickCommit', path='<DVTFilePath:0x7615a92ee0:'/Volumes/Secondary SSD/Projects/SwiftUI/QuickCommit/.asc/artifacts/QuickCommit.xcarchive/Products/Applications/QuickCommit.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x76154ec300; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7614c06f40; name='Apple Distribution: Brave New Design LLC (B84R67MX7T)', hash='2A403707776B3FCD7A59EDA4C4D249D1944F186A', serialNumber='852984BC4C471FF1856CACC9BC70BB7', certificateKinds='(
+    "1.2.840.113635.100.6.1.7",
+    "1.2.840.113635.100.6.1.4"
+), issueDate='2026-02-24 10:56:32 +0000''>', entitlements='{
+    "com.apple.application-identifier" = "B84R67MX7T.com.bravenewdesign.QuickCommit";
+    "com.apple.developer.team-identifier" = B84R67MX7T;
+    "com.apple.security.app-sandbox" = 1;
+    "com.apple.security.files.bookmarks.app-scope" = 1;
+    "com.apple.security.files.user-selected.read-write" = 1;
+}', teamID='B84R67MX7T', identifier='com.bravenewdesign.QuickCommit', executablePath='<DVTFilePath:0x76154ec000:'/Volumes/Secondary SSD/Projects/SwiftUI/QuickCommit/.asc/artifacts/QuickCommit.xcarchive/Products/Applications/QuickCommit.app/Contents/MacOS/QuickCommit'>', hardenedRuntime='1'>'> are: {
+    "com.apple.application-identifier" = "B84R67MX7T.com.bravenewdesign.QuickCommit";
+    "com.apple.developer.team-identifier" = B84R67MX7T;
+    "com.apple.security.app-sandbox" = 1;
+    "com.apple.security.files.bookmarks.app-scope" = 1;
+    "com.apple.security.files.user-selected.read-write" = 1;
+}
+2026-09-17 18:58:15 +0000 [MT] Writing entitlements for <IDEDistributionItem: 0x76154eca20; bundleID='com.bravenewdesign.QuickCommit', path='<DVTFilePath:0x7615a92ee0:'/Volumes/Secondary SSD/Projects/SwiftUI/QuickCommit/.asc/artifacts/QuickCommit.xcarchive/Products/Applications/QuickCommit.app'>', codeSigningInfo='<_DVTCodeSigningInformation_Path: 0x76154ec300; isSigned='1', isAdHocSigned='0', signingCertificate='<DVTSigningCertificate: 0x7614c06f40; name='Apple Distribution: Brave New Design LLC (B84R67MX7T)', hash='2A403707776B3FCD7A59EDA4C4D249D1944F186A', serialNumber='852984BC4C471FF1856CACC9BC70BB7', certificateKinds='(
+    "1.2.840.113635.100.6.1.7",
+    "1.2.840.113635.100.6.1.4"
+), issueDate='2026-02-24 10:56:32 +0000''>', entitlements='{
+    "com.apple.application-identifier" = "B84R67MX7T.com.bravenewdesign.QuickCommit";
+    "com.apple.developer.team-identifier" = B84R67MX7T;
+    "com.apple.security.app-sandbox" = 1;
+    "com.apple.security.files.bookmarks.app-scope" = 1;
+    "com.apple.security.files.user-selected.read-write" = 1;
+}', teamID='B84R67MX7T', identifier='com.bravenewdesign.QuickCommit', executablePath='<DVTFilePath:0x76154ec000:'/Volumes/Secondary SSD/Projects/SwiftUI/QuickCommit/.asc/artifacts/QuickCommit.xcarchive/Products/Applications/QuickCommit.app/Contents/MacOS/QuickCommit'>', hardenedRuntime='1'>'> to: /var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/entitlements~~~f7ql15
+2026-09-17 18:58:15 +0000 [MT] invoking codesign: <NSConcreteTask: 0x7614e6d090; launchPath='/usr/bin/codesign', arguments='(
+    "-f",
+    "-s",
+    2A403707776B3FCD7A59EDA4C4D249D1944F186A,
+    "--entitlements",
+    "/var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/entitlements~~~f7ql15",
+    "--preserve-metadata=identifier,flags,runtime,launch-constraints,library-constraints",
+    "--generate-entitlement-der",
+    "--strip-disallowed-xattrs",
+    "-vvv",
+    "/var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/Root/Applications/QuickCommit.app"
+)'>
+2026-09-17 18:58:15 +0000 [MT] codesign output: /var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/Root/Applications/QuickCommit.app: replacing existing signature
+/var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/Root/Applications/QuickCommit.app: signed app bundle with Mach-O thin (arm64) [com.bravenewdesign.QuickCommit]
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionZipODRItemStep
+2026-09-17 18:58:15 +0000 [MT] Skipping step: IDEDistributionZipODRItemStep because it said so
+2026-09-17 18:58:15 +0000 [MT] Processing step: IDEDistributionCreatePKGStep
+2026-09-17 18:58:15 +0000 [MT] Running /usr/bin/productbuild '--sign' '3rd Party Mac Developer Installer: Brave New Design LLC (B84R67MX7T)' '--symbolication' '/var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/Symbols' '--component' '/var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/Root/Applications/QuickCommit.app' '/Applications' '/var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/Packages/QuickCommit.pkg'
+2026-09-17 18:58:15 +0000  write: Permission denied
+write: Permission denied
+2026-09-17 18:58:15 +0000  write: Permission denied
+write: Permission denied
+2026-09-17 18:58:16 +0000  productbuild: Adding component at /var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/Root/Applications/QuickCommit.app
+productbuild: Signing product with identity "3rd Party Mac Developer Installer: Brave New Design LLC (B84R67MX7T)" from keychain /Users/shawn/Library/Keychains/login.keychain-db
+productbuild: Adding certificate "Apple Worldwide Developer Relations Certification Authority"
+productbuild: Adding certificate "Apple Root CA"
+productbuild: Wrote product to /var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/Packages/QuickCommit.pkg
+productbuild: Supported OS versions: [Min: 27.0, Before: None]
+2026-09-17 18:58:16 +0000 [MT] /usr/bin/productbuild exited with 0
+2026-09-17 18:58:16 +0000 [MT] Processing step: IDEDistributionAppStoreInformationStep
+2026-09-17 18:58:16 +0000 [MT] Skipping step: IDEDistributionAppStoreInformationStep because it said so
+2026-09-17 18:58:16 +0000 [MT] Processing step: IDEDistributionGenerateProcessedDistributionItems
+2026-09-17 18:58:16 +0000 [MT] IDEDistributionItem init <DVTFilePath:0x76154ece40:'/var/folders/0_/fcqrz95s3cg7v9p0yvb0lg8m0000gn/T/XcodeDistPipeline.~~~LTbXIA/Root/Applications/QuickCommit.app'>
+2026-09-17 18:58:16 +0000 [MT] Processing step: IDEDistributionCreateManifestStep
+2026-09-17 18:58:16 +0000 [MT] Skipping step: IDEDistributionCreateManifestStep because it said so
