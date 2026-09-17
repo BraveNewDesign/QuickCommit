@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		299D86183025230C0065ECEA /* MarketingPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299D86173025230C0065ECEA /* MarketingPreviews.swift */; };
+		29DFC4E4305C66B00031D108 /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 29DFC4E3305C66B00031D108 /* AppIcon.png */; };
 		A10000040000000000000004 /* libgit2 in Frameworks */ = {isa = PBXBuildFile; productRef = A10000050000000000000005 /* libgit2 */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		2967DEEF3021210400963389 /* QuickCommitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickCommitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2967DEF93021210400963389 /* QuickCommitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuickCommitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		299D86173025230C0065ECEA /* MarketingPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketingPreviews.swift; sourceTree = "<group>"; };
+		29DFC4E3305C66B00031D108 /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -81,6 +83,7 @@
 				2967DEFC3021210400963389 /* QuickCommitUITests */,
 				2967DEE33021210200963389 /* Products */,
 				299D86173025230C0065ECEA /* MarketingPreviews.swift */,
+				29DFC4E3305C66B00031D108 /* AppIcon.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,6 +172,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2700;
 				LastUpgradeCheck = 2700;
+				ORGANIZATIONNAME = "Brave New Design LLC";
 				TargetAttributes = {
 					2967DEE13021210200963389 = {
 						CreatedOnToolsVersion = 27.0;
@@ -195,7 +199,7 @@
 			packageReferences = (
 				A10000060000000000000006 /* XCRemoteSwiftPackageReference "libgit2" */,
 			);
-			preferredProjectObjectVersion = 77;
+			preferredProjectObjectVersion = 110;
 			productRefGroup = 2967DEE33021210200963389 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -211,6 +215,7 @@
 		2967DEE03021210200963389 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				29DFC4E4305C66B00031D108 /* AppIcon.png in Resources */,
 			);
 		};
 		2967DEED3021210400963389 /* Resources */ = {
@@ -404,13 +409,15 @@
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Quick Commit";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Brave New Design LLC";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bravenewdesign.QuickCommit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -449,13 +456,15 @@
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Quick Commit";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Brave New Design LLC";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MACOSX_DEPLOYMENT_TARGET = 27.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bravenewdesign.QuickCommit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
